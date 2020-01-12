@@ -1,0 +1,181 @@
+[
+    {
+        "id": "5e39be52.a252a8",
+        "type": "tab",
+        "label": "Velux Raumsensoren",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cd5be8a.b5fa498",
+        "type": "ioBroker in",
+        "z": "5e39be52.a252a8",
+        "name": "co2",
+        "topic": "velux.0.home.1612405432.co2",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "x": 70,
+        "y": 200,
+        "wires": [
+            [
+                "d4675439.b47d08"
+            ]
+        ]
+    },
+    {
+        "id": "dbb2a3d1.b23c4",
+        "type": "ioBroker in",
+        "z": "5e39be52.a252a8",
+        "name": "humidity",
+        "topic": "velux.0.home.1612405432.humidity",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "x": 80,
+        "y": 280,
+        "wires": [
+            [
+                "9571f084.a73938"
+            ]
+        ]
+    },
+    {
+        "id": "d5b5c817.394d58",
+        "type": "ioBroker in",
+        "z": "5e39be52.a252a8",
+        "name": "temperature",
+        "topic": "velux.0.home.1612405432.temperature",
+        "payloadType": "value",
+        "onlyack": "",
+        "func": "all",
+        "gap": "",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "6702124e.e7d3d4"
+            ]
+        ]
+    },
+    {
+        "id": "ce5fc332.9d3f8",
+        "type": "homeeDevice",
+        "z": "5e39be52.a252a8",
+        "virtual-homee": "9b1104e8.c3e69",
+        "name": "Velux Sensor Bad",
+        "nodeId": "7",
+        "profile": "3001",
+        "icon": "nodeicon_temperature",
+        "attributes": "[{\"id\":70,\"node_id\":7,\"instance\":1,\"minimum\":-50,\"maximum\":5000,\"current_value\":20,\"target_value\":20,\"last_value\":20,\"unit\":\"ppm\",\"step_value\":1,\"editable\":0,\"type\":5,\"state\":1,\"last_changed\":1572795095,\"changed_by\":1,\"changed_by_id\":0,\"based_on\":1,\"data\":\"\"},{\"id\":71,\"node_id\":7,\"instance\":2,\"minimum\":10,\"maximum\":100,\"current_value\":30,\"target_value\":30,\"last_value\":30,\"unit\":\"%\",\"step_value\":1,\"editable\":0,\"type\":5,\"state\":1,\"last_changed\":1572795095,\"changed_by\":1,\"changed_by_id\":0,\"based_on\":1,\"data\":\"\"},{\"id\":72,\"node_id\":7,\"instance\":3,\"minimum\":-10,\"maximum\":60,\"current_value\":30,\"target_value\":30,\"last_value\":30,\"unit\":\"°C\",\"step_value\":1,\"editable\":0,\"type\":5,\"state\":1,\"last_changed\":1572795095,\"changed_by\":1,\"changed_by_id\":0,\"based_on\":1,\"data\":\"\"}]",
+        "x": 790,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9023d0af.c23568",
+        "type": "function",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "func": "return {payload: {\"id\":70,\"value\":msg.payload}}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 200,
+        "wires": [
+            [
+                "ce5fc332.9d3f8"
+            ]
+        ]
+    },
+    {
+        "id": "209f6eaa.d1e5fa",
+        "type": "function",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "func": "return {payload: {\"id\":71,\"value\":msg.payload}}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "ce5fc332.9d3f8"
+            ]
+        ]
+    },
+    {
+        "id": "67a9c4fd.183c2c",
+        "type": "function",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "func": "return {payload: {\"id\":72,\"value\":msg.payload}}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "ce5fc332.9d3f8"
+            ]
+        ]
+    },
+    {
+        "id": "9571f084.a73938",
+        "type": "json",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "209f6eaa.d1e5fa"
+            ]
+        ]
+    },
+    {
+        "id": "6702124e.e7d3d4",
+        "type": "json",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 360,
+        "wires": [
+            [
+                "67a9c4fd.183c2c"
+            ]
+        ]
+    },
+    {
+        "id": "d4675439.b47d08",
+        "type": "json",
+        "z": "5e39be52.a252a8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "9023d0af.c23568"
+            ]
+        ]
+    },
+    {
+        "id": "9b1104e8.c3e69",
+        "type": "virtualHomee",
+        "z": "",
+        "name": "virtualhomee"
+    }
+]
